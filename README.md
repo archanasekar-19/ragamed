@@ -1,73 +1,136 @@
-# React + TypeScript + Vite
+Here’s a **clean, interview-ready README** you can replace your current one with 👇
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# 🏥 RagaMed — B2B Healthcare UI Application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A modern **B2B Healthcare UI platform** built to demonstrate frontend engineering capabilities using **React + TypeScript**.
+This project focuses on scalable UI architecture, authentication, real-time notifications, and data-driven interfaces.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+👉 *Add your deployed link here (Vercel / Netlify)*
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 GitHub Repository
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+👉 *Add your repo link here*
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧠 Project Objective
+
+This application simulates a **healthcare dashboard system** used by organizations to manage patient data, analytics, and workflows.
+
+It is designed to showcase:
+
+* Component-based architecture
+* Scalable UI patterns
+* Clean state management
+* Real-world feature implementation
+
+---
+
+## 🛠️ Tech Stack
+
+* **React + TypeScript**
+* **Vite**
+* **Firebase Authentication**
+* **Service Workers (Notifications)**
+* **Material UI / Custom UI**
+* **React Router**
+
+---
+
+## 🔐 Features
+
+### 🔑 Authentication
+
+* Firebase-based login
+* Secure user session handling
+* Protected routes
+
+---
+
+### 📊 Dashboard
+
+* Overview of healthcare data
+* Modular UI components
+* Responsive layout
+
+---
+
+### 📈 Analytics
+
+* Data visualization (charts / metrics)
+* Scalable widget-based structure
+
+---
+
+### 🧾 Patient Details
+
+#### 🔹 Dual View Support
+
+* **Grid View** → Card-based UI
+* **List View** → Table-based UI
+
+#### 🔹 View Toggle
+
+* Seamless switch between Grid & List views
+* State-managed UI rendering
+
+---
+
+### 🔔 Notifications
+
+* Service Worker integration
+* Background notification support
+* Real-time UX enhancement
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+  components/
+  pages/
+    Login/
+    Dashboard/
+    Analytics/
+    PatientDetails/
+  layouts/
+  services/
+  hooks/
+  types/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1️⃣ Install dependencies
+
+```bash
+yarn
 ```
+
+### 2️⃣ Start development server
+
+```bash
+yarn dev
+```
+---
+
+## 👩‍💻 Author
+
+**Archana Sekar**
+Frontend Developer (2+ years experience)
+
+---
+
+
+
