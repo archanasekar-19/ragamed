@@ -11,14 +11,7 @@ This project focuses on scalable UI architecture, authentication, real-time noti
 
 ## 🚀 Live Demo
 
-👉 *Add your deployed link here (Vercel / Netlify)*
-
----
-
-## 📦 GitHub Repository
-
-👉 *Add your repo link here*
-
+https://ragamed.netlify.app/login
 ---
 
 ## 🧠 Project Objective
@@ -102,8 +95,6 @@ src/
     Dashboard/
     Analytics/
     PatientDetails/
-  layouts/
-  services/
   hooks/
   types/
 ```
@@ -115,7 +106,7 @@ src/
 ### 1️⃣ Install dependencies
 
 ```bash
-yarn
+yarn install
 ```
 
 ### 2️⃣ Start development server
