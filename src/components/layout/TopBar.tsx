@@ -21,7 +21,7 @@ export default function TopBar({ title, subtitle }: TopBarProps) {
           {subtitle && <Typography variant="caption" color="text.secondary">{subtitle}</Typography>}
         </Box>
         <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center", bgcolor: (theme) => alpha(theme.palette.primary.main, 0.05), border: "1px solid", borderColor: "divider", borderRadius: 3, px: 2, py: 0.7, gap: 1, width: 220 }}>
-          <Search sx={{ fontSize: 18, color: "text.secondary" }} />
+          {/* <Search sx={{ fontSize: 18, color: "text.secondary" }} /> */}
           <InputBase placeholder="Search..." sx={{ fontSize: 14, flex: 1 }} />
         </Box>
         <IconButton onClick={() => navigate("/notifications")}>

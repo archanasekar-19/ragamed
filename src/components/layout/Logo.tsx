@@ -35,8 +35,8 @@ export default function Logo({
           src={src}
           alt={alt}
           sx={{
-            width: "70%",
-            height: "70%",
+            width: "100%",
+            height: "100%",
             objectFit: "cover",
           }}
         />

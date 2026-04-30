@@ -4,7 +4,7 @@ export const theme = createTheme({
   palette: {
     mode: "light",
     primary: { main: "#1e293b", contrastText: "#ffffff" },
-    secondary: { main: "#f8fafc", contrastText: "#334155" },
+    secondary: { main: "#19cbce", contrastText: "#334155" },
     background: {
       default: "#f8fafc",
       paper: "#ffffff",
@@ -18,7 +18,6 @@ export const theme = createTheme({
     warning: { main: "#ca8a04" },
     info: { main: "#2563eb" },
     divider: "#e2e8f0",
-    black: { main: "#000000" },
   },
 
   typography: {
@@ -79,7 +78,7 @@ export const theme = createTheme({
     },
   },
 
-  shape: { borderRadius: 12 },
+  shape: { borderRadius: 2 },
 
   components: {
     MuiCssBaseline: {

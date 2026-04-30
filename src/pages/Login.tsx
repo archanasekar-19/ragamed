@@ -15,6 +15,9 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { Button } from "@/components/ui/styled/button";
 import { theme } from "@/app/theme";
+import Logo from "@/components/layout/Logo";
+import toast from "react-hot-toast";
+import { isValidEmail } from "@/lib/utils/validation";
 
 const ADMIN_EMAIL = import.meta.env.VITE_FIREBASE_ADMIN;
 const ADMIN_PASSWORD = import.meta.env.VITE_FIREBASE_PASSWORD;
@@ -38,6 +41,7 @@ export default function Login() {
       }
 
       await signInWithEmailAndPassword(auth, ADMIN_EMAIL, ADMIN_PASSWORD);
+      toast.success("Welcome back! Logged in successfully 🎉");
       navigate("/dashboard");
     } catch {
       setError("Unable to continue as guest. Please try again.");
@@ -53,6 +57,7 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Welcome back! Logged in successfully 🎉");
       navigate("/dashboard");
     } catch {
       setError("Invalid email or password. Please try again.");
@@ -114,8 +119,9 @@ export default function Login() {
         <Box sx={{ mt: 5, display: "flex", flexDirection: "column", gap: 2 }}>
           {[
             "Real-time patient tracking",
-            "Role-based admin access",
+            "Centralized patient management",
             "Analytics-ready healthcare workflows",
+            "Instant critical alerts & notifications",
           ].map((item) => (
             <Box
               key={item}
@@ -157,13 +163,31 @@ export default function Login() {
           }}
         >
           <CardContent sx={{ p: { xs: 3, sm: 5 } }}>
-            <Typography
-              variant="h3"
-              component="h1"
-              sx={{ fontWeight: 800, lineHeight: 1.15 }}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1.5,
+                mb: 1,
+              }}
             >
-              Welcome back
-            </Typography>
+              <Logo
+                src="/logo.png"
+                size={40}
+                textFallback="RM"
+              />
+
+              <Typography
+                variant="h3"
+                component="h1"
+                sx={{
+                  fontWeight: 800,
+                  lineHeight: 1.15,
+                }}
+              >
+                Welcome back !
+              </Typography>
+            </Box>
 
             <Typography color="text.secondary" sx={{ mt: 1, mb: 4 }}>
               Login to access your healthcare dashboard.
@@ -240,7 +264,10 @@ export default function Login() {
                 type="submit"
                 variantType="default"
                 sizeType="lg"
-                disabled={loading}
+                disabled={
+                  loading ||
+                  !email ||
+                  !password}
                 fullWidth
               >
                 {loading ? "Signing in..." : "Sign in"}

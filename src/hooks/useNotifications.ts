@@ -1,8 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppStore } from "../store/appStore";
+import { formatDate } from "@/lib/utils";
 
 export function useNotifications() {
   const { addNotification } = useAppStore();
+
+  // toggle state (persisted)
+  const [enabled, setEnabled] = useState(() => {
+    const saved = localStorage.getItem("notifications_enabled");
+    return saved ? JSON.parse(saved) : true;
+  });
+
+  const toggleNotifications = () => {
+    setEnabled((prev:any) => {
+      localStorage.setItem("notifications_enabled", JSON.stringify(!prev));
+      return !prev;
+    });
+  };
 
   const requestPermission = async () => {
     if (!("Notification" in window)) return false;
@@ -12,37 +26,57 @@ export function useNotifications() {
   };
 
   const sendBrowserNotification = async (title: string, body: string) => {
+    // if disabled → skip browser notif
+    if (!enabled) {
+      addNotification({ title, message: body, type: "info" });
+      return;
+    }
+
     const granted = await requestPermission();
+
     if (granted) {
       new Notification(title, {
         body,
-        icon: "/vite.svg",
-        badge: "/vite.svg",
+        icon: "/notification-icon.png",
+        badge: "/notification-icon.png",
       });
     }
-    // Also add to in-app store
+
     addNotification({ title, message: body, type: "info" });
   };
 
-  // Register service worker
+  // service worker
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .catch(() => {/* sw not critical */});
+        .catch(() => {});
     }
   }, []);
 
-  // Demo: send a notification after 10s of being logged in
+  // demo notification
   useEffect(() => {
     const timer = setTimeout(() => {
+      const today = formatDate(new Date(), {
+        day: "numeric",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
       sendBrowserNotification(
         "Daily Report Ready",
-        "Your daily patient summary for April 30 is now available."
+        `Your daily patient summary for ${today} is now available.`
       );
     }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
 
-  return { sendBrowserNotification, requestPermission };
+    return () => clearTimeout(timer);
+  }, [enabled]);
+
+  return {
+    sendBrowserNotification,
+    requestPermission,
+    enabled,
+    toggleNotifications,
+  };
 }

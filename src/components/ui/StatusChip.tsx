@@ -21,6 +21,11 @@ const statusConfig: Record<string, { color: string; bg: string; border: string }
     bg: "#f1f5f9",
     border: "#cbd5e1",
   },
+  Emergency: {
+  color: "#ca8a04",                    // main text / icon
+  bg: "rgba(202,138,4,0.10)",         // soft background
+  border: "rgba(202,138,4,0.35)",     // subtle border
+}
 };
 
 interface StatusChipProps {

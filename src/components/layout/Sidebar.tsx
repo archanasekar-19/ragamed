@@ -1,11 +1,13 @@
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, Avatar, Divider, Tooltip, IconButton, Badge } from "@mui/material";
-import { Dashboard, Analytics, People, Notifications, Logout, LocalHospital, ChevronLeft, ChevronRight, Circle } from "@mui/icons-material";
+import { Dashboard, Analytics, People, Notifications, Logout, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useAppStore } from "../../store/appStore";
 import Logo from "./Logo";
 import { theme } from "@/app/theme";
+import toast from "react-hot-toast";
+
 
 const SIDEBAR_W = 260;
 const SIDEBAR_MINI = 72;
@@ -25,6 +27,7 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     await signOut(auth);
+    toast.success("Logged out successfully");
     navigate("/login");
   };
 
@@ -74,7 +77,7 @@ export default function Sidebar() {
                 <ListItemButton
                   onClick={() => navigate(item.path)}
                   sx={{
-                    borderRadius: 1,
+                    borderRadius: 3,
                     minHeight: 46,
                     px: sidebarOpen ? 2 : 1.5,
                     justifyContent: sidebarOpen ? "initial" : "center",
@@ -97,10 +100,8 @@ export default function Sidebar() {
                   <ListItemIcon
                     sx={{
                       minWidth: sidebarOpen ? 36 : "auto",
-                      color: active
-                        ? "#ffffff"
-                        : "rgba(255,255,255,0.6)",
                       transition: "0.2s",
+                      color: theme.palette.primary.contrastText
                     }}
                   >
                     {isNotif && unread > 0 ? (
@@ -115,13 +116,15 @@ export default function Sidebar() {
                   {sidebarOpen && (
                     <ListItemText
                       primary={item.label}
-                      primaryTypographyProps={{
-                        fontSize: 14,
-                        fontWeight: active ? 600 : 500,
-                        color: active
-                          ? "#ffffff"
-                          : "rgba(255,255,255,0.65)",
-                        transition: "0.2s",
+                      slotProps={{
+                        primary: {
+                          sx: {
+                            fontSize: 14,
+                            fontWeight: active ? 600 : 500,
+                            color: "#ffffff",
+                            transition: "0.2s",
+                          },
+                        },
                       }}
                     />
                   )}
@@ -162,10 +165,21 @@ export default function Sidebar() {
         </Box>
         <Tooltip title={sidebarOpen ? "" : "Logout"} placement="right">
           <ListItemButton onClick={handleLogout} sx={{ borderRadius: 2.5, px: sidebarOpen ? 2 : 1.5, justifyContent: sidebarOpen ? "initial" : "center", "&:hover": { bgcolor: "rgba(239,68,68,0.15)" } }}>
-            <ListItemIcon sx={{ minWidth: sidebarOpen ? 36 : "auto", color: "rgba(239,68,68,0.7)" }}>
+            <ListItemIcon sx={{ minWidth: sidebarOpen ? 36 : "auto", color: theme.palette.primary.contrastText }}>
               <Logout fontSize="small" />
             </ListItemIcon>
-            {sidebarOpen && <ListItemText primary="Logout" primaryTypographyProps={{ fontSize: 14, fontWeight: 500, color: "rgba(239,68,68,0.8)" }} />}
+            {sidebarOpen &&
+              <ListItemText
+                primary="Logout"
+                slotProps={{
+                  primary: {
+                    sx: {
+                      fontSize: 14,
+                      fontWeight: 500,
+                    },
+                  },
+                }}
+              />}
           </ListItemButton>
         </Tooltip>
       </Box>
