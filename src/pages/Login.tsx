@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/styled/button";
 import { theme } from "@/app/theme";
 import Logo from "@/components/layout/Logo";
 import toast from "react-hot-toast";
-import { isValidEmail } from "@/lib/utils/validation";
 
 const ADMIN_EMAIL = import.meta.env.VITE_FIREBASE_ADMIN;
 const ADMIN_PASSWORD = import.meta.env.VITE_FIREBASE_PASSWORD;

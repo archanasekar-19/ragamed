@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography, IconButton, Badge, Box, InputBase, alpha } from "@mui/material";
-import { Notifications, Search } from "@mui/icons-material";
+import { Notifications} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../../store/appStore";
 

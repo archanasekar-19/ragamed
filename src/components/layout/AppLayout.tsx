@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
-import { useAppStore } from "../../store/appStore";
 import { useNotifications } from "../../hooks/useNotifications";
 
 interface AppLayoutProps {
@@ -11,7 +10,6 @@ interface AppLayoutProps {
 }
 
 export default function AppLayout({ children, title, subtitle }: AppLayoutProps) {
-  const { sidebarOpen } = useAppStore();
   useNotifications(); // register SW and schedule demo notification
 
   return (

@@ -5,9 +5,8 @@ import {
     Typography,
     IconButton,
     Stack,
-    Button,
 } from "@mui/material";
-import { Close, Download } from "@mui/icons-material";
+import { Close} from "@mui/icons-material";
 
 type DocumentViewerDialogProps = {
     open: boolean;

@@ -1,4 +1,4 @@
-import { Box, Card, Typography, Divider } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import { People, AttachMoney, TrendingUp, Healing } from "@mui/icons-material";
 import AppLayout from "../components/layout/AppLayout";
 import StatCard from "../components/ui/StatCard";
@@ -6,8 +6,6 @@ import { analyticsData } from "../data/mockData";
 import { useAppStore } from "../store/appStore";
 import MuiLineChart from "@/components/charts/MuiLineChart";
 import MuiPieChart from "@/components/charts/MuiPieChart";
-
-const COLORS = ["#16a34a", "#8b5cf6", "#22c55e", "#f59e0b", "#ef4444", "#64748b"];
 
 export default function Analytics() {
   const { patients } = useAppStore();

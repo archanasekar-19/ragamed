@@ -1,4 +1,4 @@
-import { Box, Skeleton, Stack, useTheme } from "@mui/material";
+import { Box, Skeleton, Stack } from "@mui/material";
 
 type GlobalSkeletonLoaderProps = {
     variant?: "dashboard" | "page" | "list" | "detail";
